@@ -43,6 +43,7 @@ export interface ProfitSummary {
   total_tax: number;
   net_earnings: number;
   pending_profits: number;
+  pending_losses: number;
   distributed_profits: number;
   total_months: number;
   average_monthly_profit: number;

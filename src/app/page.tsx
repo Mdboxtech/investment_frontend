@@ -8,10 +8,12 @@ import { formatCurrency, getCurrencySettings } from '@/lib/utils'
 import { useEffect, useState } from 'react'
 
 import { useRouter } from 'next/navigation'
+import { useSettings } from '@/contexts/SettingsContext'
 
 export default function HomePage() {
   const [currency, setCurrency] = useState({ symbol: '$', code: 'USD' })
   const router = useRouter()
+  const { settings } = useSettings()
 
   useEffect(() => {
     // Check for PWA standalone mode
@@ -32,10 +34,14 @@ export default function HomePage() {
       <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="h-10 w-10 rounded-lg bg-primary flex items-center justify-center">
-              <TrendingUp className="h-6 w-6 text-primary-foreground" />
-            </div>
-            <span className="font-bold text-xl">StockInvest</span>
+            {settings.platform_logo ? (
+              <img src={settings.platform_logo} alt="Logo" className="h-10 w-10 object-contain" />
+            ) : (
+              <div className="h-10 w-10 rounded-lg bg-primary flex items-center justify-center">
+                <TrendingUp className="h-6 w-6 text-primary-foreground" />
+              </div>
+            )}
+            <span className="font-bold text-xl">{settings.platform_name || 'StockInvest'}</span>
           </div>
           <div className="flex items-center gap-4">
             <Link href="/login">
@@ -161,7 +167,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4 py-12 md:py-20">
           <div className="grid gap-8 md:grid-cols-2 md:gap-12 items-center">
             <div>
-              <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6">Why Choose StockInvest?</h2>
+              <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6">Why Choose {settings.platform_name || 'StockInvest'}?</h2>
               <div className="space-y-4">
                 {[
                   'Transparent profit distribution based on share ownership',
@@ -239,13 +245,17 @@ export default function HomePage() {
         <div className="container mx-auto px-4 py-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-2">
-              <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
-                <TrendingUp className="h-5 w-5 text-primary-foreground" />
-              </div>
-              <span className="font-bold">StockInvest</span>
+              {settings.platform_logo ? (
+                <img src={settings.platform_logo} alt="Logo" className="h-8 w-8 object-contain" />
+              ) : (
+                <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
+                  <TrendingUp className="h-5 w-5 text-primary-foreground" />
+                </div>
+              )}
+              <span className="font-bold">{settings.platform_name || 'StockInvest'}</span>
             </div>
             <p className="text-sm text-muted-foreground">
-              © 2026 StockInvest. All rights reserved.
+              © {new Date().getFullYear()} {settings.platform_name || 'StockInvest'}. All rights reserved.
             </p>
           </div>
         </div>

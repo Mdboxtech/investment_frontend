@@ -13,16 +13,19 @@ import { Alert, AlertDescription } from '@/components/ui/alert'
 import { TrendingUp, Eye, EyeOff, CheckCircle, AlertCircle } from 'lucide-react'
 import { AxiosError } from 'axios'
 
+import { useSettings } from '@/contexts/SettingsContext'
+
 export default function RegisterPage() {
   const router = useRouter()
   const { isAuthenticated, isLoading: authLoading } = useAuth()
-  
+  const { settings } = useSettings()
+
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [validationErrors, setValidationErrors] = useState<Record<string, string[]>>({})
-  
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -39,11 +42,11 @@ export default function RegisterPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    
+
     // Reset errors
     setError(null)
     setValidationErrors({})
-    
+
     // Client-side validation
     if (!formData.name || !formData.email || !formData.password || !formData.confirmPassword) {
       setError('Please fill in all fields')
@@ -59,9 +62,9 @@ export default function RegisterPage() {
       setError('Password must be at least 8 characters')
       return
     }
-    
+
     setIsLoading(true)
-    
+
     try {
       // Call register API
       const response = await authService.register({
@@ -80,10 +83,10 @@ export default function RegisterPage() {
       }
     } catch (err: any) {
       const axiosError = err as AxiosError<any>
-      
+
       if (axiosError.response) {
         const { status, data } = axiosError.response
-        
+
         // Handle validation errors (422)
         if (status === 422 && data.errors) {
           setValidationErrors(data.errors)
@@ -100,7 +103,7 @@ export default function RegisterPage() {
         // Other errors
         setError('An unexpected error occurred. Please try again.')
       }
-      
+
       console.error('Registration error:', err)
     } finally {
       setIsLoading(false)
@@ -132,10 +135,14 @@ export default function RegisterPage() {
       <div className="w-full max-w-md space-y-6">
         {/* Logo */}
         <div className="flex items-center justify-center gap-2">
-          <div className="h-12 w-12 rounded-lg bg-primary flex items-center justify-center">
-            <TrendingUp className="h-7 w-7 text-primary-foreground" />
-          </div>
-          <span className="font-bold text-2xl">StockInvest</span>
+          {settings.platform_logo ? (
+            <img src={settings.platform_logo} alt="Logo" className="h-12 w-12 object-contain" />
+          ) : (
+            <div className="h-12 w-12 rounded-lg bg-primary flex items-center justify-center">
+              <TrendingUp className="h-7 w-7 text-primary-foreground" />
+            </div>
+          )}
+          <span className="font-bold text-2xl">{settings.platform_name || 'StockInvest'}</span>
         </div>
 
         <Card>
@@ -223,9 +230,8 @@ export default function RegisterPage() {
                     {passwordRequirements.map((req, index) => (
                       <div
                         key={index}
-                        className={`flex items-center gap-2 text-xs ${
-                          req.met ? 'text-green-600 dark:text-green-400' : 'text-muted-foreground'
-                        }`}
+                        className={`flex items-center gap-2 text-xs ${req.met ? 'text-green-600 dark:text-green-400' : 'text-muted-foreground'
+                          }`}
                       >
                         <CheckCircle className="h-3 w-3" />
                         <span>{req.text}</span>

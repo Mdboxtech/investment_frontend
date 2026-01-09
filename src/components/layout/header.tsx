@@ -28,6 +28,8 @@ interface HeaderProps {
   onRefreshBalance?: () => Promise<void>
 }
 
+import { useSettings } from '@/contexts/SettingsContext'
+
 export function Header({ userName, userEmail, userRole, userBalance = 0, onRefreshBalance }: HeaderProps) {
   const [searchQuery, setSearchQuery] = useState('')
   const [notifications, setNotifications] = useState<any[]>([])
@@ -35,6 +37,7 @@ export function Header({ userName, userEmail, userRole, userBalance = 0, onRefre
   const [loadingNotifications, setLoadingNotifications] = useState(false)
   const [refreshingBalance, setRefreshingBalance] = useState(false)
   const router = useRouter()
+  const { settings } = useSettings()
 
   const initials = userName
     .split(' ')
@@ -115,10 +118,14 @@ export function Header({ userName, userEmail, userRole, userBalance = 0, onRefre
       {/* Mobile: Show logo in center */}
       <div className="flex-1 lg:hidden flex justify-center">
         <Link href={userRole === 'admin' ? '/admin' : '/dashboard'} className="flex items-center gap-2">
-          <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
-            <TrendingUp className="h-5 w-5 text-primary-foreground" />
-          </div>
-          <span className="font-bold text-lg hidden sm:inline">StockInvest</span>
+          {settings.platform_logo ? (
+            <img src={settings.platform_logo} alt="Logo" className="h-8 w-8 object-contain" />
+          ) : (
+            <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
+              <TrendingUp className="h-5 w-5 text-primary-foreground" />
+            </div>
+          )}
+          <span className="font-bold text-lg hidden sm:inline truncate max-w-[150px]">{settings.platform_name || 'StockInvest'}</span>
         </Link>
       </div>
 

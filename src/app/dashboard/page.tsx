@@ -132,7 +132,7 @@ export default function UserDashboard() {
       </div>
 
       {/* Stats Grid */}
-      <div data-tour="stats-grid" className="grid gap-4 grid-cols-2 lg:grid-cols-5">
+      <div data-tour="stats-grid" className="grid gap-4 grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
         <div data-tour="stat-wallet-balance">
           <Card className="bg-gradient-to-br from-success/10 to-success/5 border-success/20">
             <CardContent className="p-3 sm:p-4">
@@ -188,8 +188,18 @@ export default function UserDashboard() {
             title="Pending Profits"
             value={formatCurrency(pendingProfits)}
             subtitle="Awaiting distribution"
-            icon={WalletIcon}
-            iconClassName="bg-warning/10"
+            icon={ArrowUpRight}
+            iconClassName="bg-success/10 text-success"
+          />
+        </div>
+        <div>
+          <StatCard
+            title="Pending Losses"
+            value={formatCurrency(data.profitSummary?.pending_losses || 0)}
+            subtitle="Estimated loss share"
+            icon={ArrowDownRight}
+            iconClassName="bg-destructive/10 text-destructive"
+            className="border-destructive/20"
           />
         </div>
       </div>

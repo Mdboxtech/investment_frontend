@@ -13,11 +13,14 @@ import { TrendingUp, Eye, EyeOff, AlertCircle } from 'lucide-react'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { AxiosError } from 'axios'
 
+import { useSettings } from '@/contexts/SettingsContext'
+
 export default function LoginPage() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const { login, isAuthenticated, isLoading: authLoading, setAuthToken } = useAuth()
   const { isWebView, sendToNativeApp } = useWebView()
+  const { settings } = useSettings()
 
   const [showPassword, setShowPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
@@ -124,10 +127,14 @@ export default function LoginPage() {
       <div className="w-full max-w-md space-y-6">
         {/* Logo */}
         <div className="flex items-center justify-center gap-2">
-          <div className="h-12 w-12 rounded-lg bg-primary flex items-center justify-center">
-            <TrendingUp className="h-7 w-7 text-primary-foreground" />
-          </div>
-          <span className="font-bold text-2xl">StockInvest</span>
+          {settings.platform_logo ? (
+            <img src={settings.platform_logo} alt="Logo" className="h-12 w-12 object-contain" />
+          ) : (
+            <div className="h-12 w-12 rounded-lg bg-primary flex items-center justify-center">
+              <TrendingUp className="h-7 w-7 text-primary-foreground" />
+            </div>
+          )}
+          <span className="font-bold text-2xl">{settings.platform_name || 'StockInvest'}</span>
         </div>
 
         <Card>

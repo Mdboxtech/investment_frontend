@@ -114,11 +114,14 @@ const adminNavItems = [
   },
 ]
 
+import { useSettings } from '@/contexts/SettingsContext'
+
 export function Sidebar({ userRole, isAdmin = false }: SidebarProps) {
   const pathname = usePathname()
   const [collapsed, setCollapsed] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const navItems = userRole === 'admin' ? adminNavItems : userNavItems
+  const { settings } = useSettings()
 
   // Close mobile menu on route change
   useEffect(() => {
@@ -131,10 +134,14 @@ export function Sidebar({ userRole, isAdmin = false }: SidebarProps) {
       <div className="flex h-16 items-center justify-between px-4 border-b">
         {(!collapsed || isMobile) && (
           <Link href={userRole === 'admin' ? '/admin' : '/dashboard'} className="flex items-center gap-2">
-            <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
-              <TrendingUp className="h-5 w-5 text-primary-foreground" />
-            </div>
-            <span className="font-bold text-lg">StockInvest</span>
+            {settings.platform_logo ? (
+              <img src={settings.platform_logo} alt="Logo" className="h-8 w-8 object-contain" />
+            ) : (
+              <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
+                <TrendingUp className="h-5 w-5 text-primary-foreground" />
+              </div>
+            )}
+            <span className="font-bold text-lg truncate max-w-[140px]">{settings.platform_name || 'StockInvest'}</span>
           </Link>
         )}
         {!isMobile && (
