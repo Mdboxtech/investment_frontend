@@ -38,7 +38,7 @@ export default function HomePage() {
       </header>
 
       {/* Hero Section */}
-      <section className="container mx-auto px-4 py-20 text-center">
+      <section className="container mx-auto px-4 py-12 md:py-20 text-center">
         <div className="max-w-3xl mx-auto space-y-6">
           <div className="inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-sm bg-primary/5 text-primary">
             <Shield className="h-4 w-4" />
@@ -52,14 +52,14 @@ export default function HomePage() {
             Join our investment platform to purchase company shares, track performance in real-time,
             and earn monthly profits from successful business operations.
           </p>
-          <div className="flex items-center justify-center gap-4 pt-4">
-            <Link href="/register">
-              <Button size="lg" className="gap-2">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-4">
+            <Link href="/register" className="w-full sm:w-auto">
+              <Button size="lg" className="gap-2 w-full">
                 Start Investing <ArrowRight className="h-4 w-4" />
               </Button>
             </Link>
-            <Link href="/login">
-              <Button size="lg" variant="outline">
+            <Link href="/login" className="w-full sm:w-auto">
+              <Button size="lg" variant="outline" className="w-full">
                 View Dashboard
               </Button>
             </Link>
@@ -72,40 +72,40 @@ export default function HomePage() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           <Card className="text-center">
             <CardContent className="pt-6">
-              <p className="text-3xl font-bold text-primary">{currency.symbol}2.5M+</p>
-              <p className="text-sm text-muted-foreground">Total Invested</p>
+              <p className="text-xl sm:text-2xl md:text-3xl font-bold text-primary">{currency.symbol}2.5M+</p>
+              <p className="text-xs sm:text-sm text-muted-foreground">Total Invested</p>
             </CardContent>
           </Card>
           <Card className="text-center">
             <CardContent className="pt-6">
-              <p className="text-3xl font-bold text-primary">245+</p>
-              <p className="text-sm text-muted-foreground">Active Investors</p>
+              <p className="text-xl sm:text-2xl md:text-3xl font-bold text-primary">245+</p>
+              <p className="text-xs sm:text-sm text-muted-foreground">Active Investors</p>
             </CardContent>
           </Card>
           <Card className="text-center">
             <CardContent className="pt-6">
-              <p className="text-3xl font-bold text-primary">15%+</p>
-              <p className="text-sm text-muted-foreground">Avg. Annual ROI</p>
+              <p className="text-xl sm:text-2xl md:text-3xl font-bold text-primary">15%+</p>
+              <p className="text-xs sm:text-sm text-muted-foreground">Avg. Annual ROI</p>
             </CardContent>
           </Card>
           <Card className="text-center">
             <CardContent className="pt-6">
-              <p className="text-3xl font-bold text-primary">{currency.symbol}375K+</p>
-              <p className="text-sm text-muted-foreground">Profits Distributed</p>
+              <p className="text-xl sm:text-2xl md:text-3xl font-bold text-primary">{currency.symbol}375K+</p>
+              <p className="text-xs sm:text-sm text-muted-foreground">Profits Distributed</p>
             </CardContent>
           </Card>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="container mx-auto px-4 py-20">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4">How It Works</h2>
+      <section className="container mx-auto px-4 py-12 md:py-20">
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="text-2xl md:text-3xl font-bold mb-4">How It Works</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Our platform makes share investment simple, transparent, and profitable
           </p>
         </div>
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid gap-6 md:grid-cols-3 md:gap-8">
           <Card className="card-hover">
             <CardHeader>
               <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
@@ -147,10 +147,10 @@ export default function HomePage() {
 
       {/* Benefits Section */}
       <section className="bg-card border-y">
-        <div className="container mx-auto px-4 py-20">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="container mx-auto px-4 py-12 md:py-20">
+          <div className="grid gap-8 md:grid-cols-2 md:gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold mb-6">Why Choose StockInvest?</h2>
+              <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6">Why Choose StockInvest?</h2>
               <div className="space-y-4">
                 {[
                   'Transparent profit distribution based on share ownership',
@@ -206,16 +206,16 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="container mx-auto px-4 py-20 text-center">
-        <div className="max-w-2xl mx-auto space-y-6">
-          <h2 className="text-3xl font-bold">Ready to Start Investing?</h2>
+      <section className="container mx-auto px-4 py-12 md:py-20 text-center">
+        <div className="max-w-2xl mx-auto space-y-4 md:space-y-6">
+          <h2 className="text-2xl md:text-3xl font-bold">Ready to Start Investing?</h2>
           <p className="text-muted-foreground">
             Join thousands of investors who are growing their wealth through our transparent
             share investment platform.
           </p>
-          <div className="flex items-center justify-center gap-4">
-            <Link href="/register">
-              <Button size="lg" className="gap-2">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+            <Link href="/register" className="w-full sm:w-auto">
+              <Button size="lg" className="gap-2 w-full">
                 Create Account <ArrowRight className="h-4 w-4" />
               </Button>
             </Link>
