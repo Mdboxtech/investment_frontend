@@ -185,6 +185,7 @@ export const getRoleBadgeVariant = (role: string): string => {
 const userService = {
   getUsers,
   getUser,
+  createUser,
   updateUser,
   deleteUser,
   toggleUserStatus,
