@@ -114,8 +114,8 @@ export const openPaystackPopup = (config: {
   email: string
   amount: number // in main currency unit (e.g., NGN)
   reference: string
-  onSuccess: (reference: string) => void
-  onClose: () => void
+  onSuccess?: (reference: string) => void
+  onClose?: () => void
 }) => {
   // This function should only be called on the client side
   if (typeof window === 'undefined') {
@@ -137,7 +137,7 @@ export const openPaystackPopup = (config: {
     ref: config.reference,
     onClose: config.onClose,
     callback: (response: { reference: string }) => {
-      config.onSuccess(response.reference)
+      config.onSuccess?.(response.reference)
     },
   })
 

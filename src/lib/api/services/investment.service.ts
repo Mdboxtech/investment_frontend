@@ -62,6 +62,8 @@ export interface InvestmentSummary {
 export interface BuyShareRequest {
   share_id: number;
   quantity: number;
+  payment_reference?: string;
+  payment_method?: string;
 }
 
 // Investment service

@@ -197,7 +197,7 @@ export default function InvestorsPage() {
         email: createForm.email,
         phone: createForm.phone || undefined,
         password: createForm.password || undefined,
-        role: 'user',
+        role: 'user' as const,
       }
 
       await userService.createUser(payload)

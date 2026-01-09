@@ -1,0 +1,52 @@
+﻿  Γû▓ Next.js 14.2.3
+  - Environments: .env.local
+
+   Creating an optimized production build ...
+ Γ£ô Compiled successfully
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/27) ...
+   Generating static pages (6/27) 
+   Generating static pages (13/27) 
+   Generating static pages (20/27) 
+ Γ£ô Generating static pages (27/27)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                              Size     First Load JS
+Γöî Γùï /                                    4.06 kB         107 kB
+Γö£ Γùï /_not-found                          879 B          88.2 kB
+Γö£ Γùï /admin                               4.47 kB         236 kB
+Γö£ Γùï /admin/funding-requests              8.02 kB         162 kB
+Γö£ Γùï /admin/investors                     11 kB           165 kB
+Γö£ Γùï /admin/notifications                 4.06 kB         162 kB
+Γö£ Γùï /admin/notifications/create          11.1 kB         165 kB
+Γö£ Γùï /admin/pool                          5.61 kB         126 kB
+Γö£ ╞Æ /admin/pool/[id]                     4.33 kB         124 kB
+Γö£ Γùï /admin/profits                       9.21 kB         167 kB
+Γö£ Γùï /admin/reports                       4.47 kB         259 kB
+Γö£ Γùï /admin/settings                      14.1 kB         167 kB
+Γö£ Γùï /admin/shares                        9.45 kB         142 kB
+Γö£ ╞Æ /admin/users/[id]                    5.54 kB         125 kB
+Γö£ Γùï /dashboard                           5.17 kB         237 kB
+Γö£ Γùï /dashboard/investments               6.48 kB         132 kB
+Γö£ Γùï /dashboard/notifications             3.24 kB         161 kB
+Γö£ Γùï /dashboard/profits                   4.88 kB         235 kB
+Γö£ Γùï /dashboard/settings                  3.61 kB         124 kB
+Γö£ Γùï /dashboard/settings/bank-accounts    6.52 kB         171 kB
+Γö£ Γùï /dashboard/shares                    9.96 kB         154 kB
+Γö£ Γùï /dashboard/shares/payment-callback   3.05 kB         123 kB
+Γö£ Γùï /dashboard/transactions              4.69 kB         154 kB
+Γö£ Γùï /dashboard/wallet                    9.03 kB         154 kB
+Γö£ Γùï /dashboard/wallet/payment-callback   3.27 kB         123 kB
+Γö£ Γùï /login                               5.26 kB         132 kB
+Γöö Γùï /register                            4.61 kB         131 kB
++ First Load JS shared by all            87.3 kB
+  Γö£ chunks/7023-cf3935414d498021.js      31.6 kB
+  Γö£ chunks/fd9d1056-db05fd63039014f9.js  53.6 kB
+  Γöö other shared chunks (total)          2.05 kB
+
+
+Γùï  (Static)   prerendered as static content
+╞Æ  (Dynamic)  server-rendered on demand
+

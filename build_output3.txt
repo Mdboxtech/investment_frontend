@@ -1,0 +1,71 @@
+﻿  Γû▓ Next.js 14.2.3
+  - Environments: .env.local
+
+   Creating an optimized production build ...
+ Γ£ô Compiled successfully
+   Linting and checking validity of types ...
+node.exe : Failed to 
+compile.
+At C:\Program 
+Files\nodejs\npx.ps1:29 
+char:3
++   & $NODE_EXE $NPX_CLI_JS 
+$args
++   ~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~
+    + CategoryInfo          
+    : NotSpecified: (Faile  
+  d to compile.:String) [   
+ ], RemoteException
+    + FullyQualifiedErrorId 
+    : NativeCommandError
+ 
+
+./src/lib/api/services/payst
+ack.service.ts:104:23
+Type error: Argument of 
+type '{ publicKey: string; 
+email: string; amount: 
+number; reference: string; 
+callbackUrl?: string | 
+undefined; onSuccess?: 
+((reference: string) => 
+void) | undefined; 
+onClose?: (() => void) | 
+undefined; }' is not 
+assignable to parameter of 
+type '{ publicKey: string; 
+email: string; amount: 
+number; reference: string; 
+onSuccess: (reference: 
+string) => void; onClose: 
+() => void; }'.
+  Types of property 
+'onSuccess' are 
+incompatible.
+    Type '((reference: 
+string) => void) | 
+undefined' is not 
+assignable to type 
+'(reference: string) => 
+void'.
+      Type 'undefined' is 
+not assignable to type 
+'(reference: string) => 
+void'.
+
+[0m [90m 102 |[39m   } 
+[36melse[39m {[0m
+[0m [90m 103 |[39m     
+[90m// In regular browser: 
+Use popup method[39m[0m
+[0m[31m[1m>[22m[39m[90
+m 104 |[39m     openPaystac
+kPopup(config)[0m
+[0m [90m     |[39m       
+                
+[31m[1m^[22m[39m[0m
+[0m [90m 105 |[39m   
+}[0m
+[0m [90m 106 |[39m }[0m
+[0m [90m 107 |[39m[0m

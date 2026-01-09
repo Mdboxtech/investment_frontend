@@ -1,0 +1,52 @@
+﻿  Γû▓ Next.js 14.2.3
+  - Environments: .env.local
+
+   Creating an optimized production build ...
+ Γ£ô Compiled successfully
+   Linting and checking validity of types ...
+node.exe : Failed to 
+compile.
+At C:\Program 
+Files\nodejs\npx.ps1:29 
+char:3
++   & $NODE_EXE $NPX_CLI_JS 
+$args
++   ~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~
+    + CategoryInfo          
+    : NotSpecified: (Faile  
+  d to compile.:String) [   
+ ], RemoteException
+    + FullyQualifiedErrorId 
+    : NativeCommandError
+ 
+
+./src/lib/api/services/setti
+ngs.service.ts:184:23
+Type error: 'item' is of 
+type 'unknown'.
+
+[0m [90m 182 |[39m       
+[36mif[39m 
+(groupSettings) {[0m
+[0m [90m 183 |[39m       
+  [36mfor[39m 
+([36mconst[39m 
+[key[33m,[39m item] 
+[36mof[39m [33mObject[39
+m[33m.[39mentries(groupSet
+tings)) {[0m
+[0m[31m[1m>[22m[39m[90
+m 184 |[39m           
+flat[key] [33m=[39m item[
+33m.[39mvalue[33m;[39m[0
+m
+[0m [90m     |[39m       
+                
+[31m[1m^[22m[39m[0m
+[0m [90m 185 |[39m       
+  }[0m
+[0m [90m 186 |[39m       
+}[0m
+[0m [90m 187 |[39m     
+}[0m

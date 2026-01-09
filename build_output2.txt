@@ -1,0 +1,59 @@
+﻿  Γû▓ Next.js 14.2.3
+  - Environments: .env.local
+
+   Creating an optimized production build ...
+ Γ£ô Compiled successfully
+   Linting and checking validity of types ...
+node.exe : Failed to 
+compile.
+At C:\Program 
+Files\nodejs\npx.ps1:29 
+char:3
++   & $NODE_EXE $NPX_CLI_JS 
+$args
++   ~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~
+    + CategoryInfo          
+    : NotSpecified: (Faile  
+  d to compile.:String) [   
+ ], RemoteException
+    + FullyQualifiedErrorId 
+    : NativeCommandError
+ 
+
+./src/app/dashboard/shares/p
+ayment-callback/page.tsx:65:
+25
+Type error: Object literal 
+may only specify known 
+properties, and 
+'payment_reference' does 
+not exist in type 
+'BuyShareRequest'.
+
+[0m [90m 63 |[39m        
+                 
+share_id[33m:[39m purchase
+Info[33m.[39mshare_id[33m
+,[39m[0m
+[0m [90m 64 |[39m        
+                 
+quantity[33m:[39m purchase
+Info[33m.[39mquantity[33m
+,[39m[0m
+[0m[31m[1m>[22m[39m[90
+m 65 |[39m                 
+        payment_reference[3
+3m:[39m 
+reference[33m,[39m[0m
+[0m [90m    |[39m        
+                 
+[31m[1m^[22m[39m[0m
+[0m [90m 66 |[39m        
+                 
+payment_method[33m:[39m [
+32m'paystack'[39m[33m,[39
+m[0m
+[0m [90m 67 |[39m        
+             })[0m
+[0m [90m 68 |[39m[0m

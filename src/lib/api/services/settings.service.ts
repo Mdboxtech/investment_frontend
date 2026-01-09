@@ -177,15 +177,15 @@ class SettingsService {
    */
   flattenSettings(grouped: SettingsGrouped): Partial<PlatformSettings> {
     const flat: Record<string, any> = {};
-    
+
     for (const [, groupSettings] of Object.entries(grouped)) {
       if (groupSettings) {
-        for (const [key, item] of Object.entries(groupSettings)) {
+        for (const [key, item] of Object.entries(groupSettings) as [string, SettingItem][]) {
           flat[key] = item.value;
         }
       }
     }
-    
+
     return flat as Partial<PlatformSettings>;
   }
 

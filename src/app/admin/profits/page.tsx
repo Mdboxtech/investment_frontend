@@ -222,6 +222,7 @@ function ProfitRecord({
 
 interface Profit {
   id: number
+  type: 'profit' | 'loss'
   title: string
   description: string | null
   total_amount: string
