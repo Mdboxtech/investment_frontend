@@ -12,6 +12,23 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'StockInvest - Company Share Investment Platform',
   description: 'Invest in company shares, track performance, and earn profits through transparent investment management.',
+  manifest: '/manifest.json',
+  themeColor: '#3b82f6',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'StockInvest',
+  },
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+  },
+  icons: {
+    icon: '/icons/icon-192x192.png',
+    apple: '/apple-touch-icon.png',
+  },
 }
 
 export default function RootLayout({
