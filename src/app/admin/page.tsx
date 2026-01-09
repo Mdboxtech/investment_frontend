@@ -211,26 +211,26 @@ export default function AdminDashboard() {
       {/* Investment Pool Overview */}
       <Card className="bg-gradient-to-r from-primary/10 via-primary/5 to-transparent border-primary/20">
         <CardContent className="p-4 md:p-6">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6">
-            <div>
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-5 md:gap-6">
+            <div className="min-w-0">
               <p className="text-xs md:text-sm text-muted-foreground">Pool Total</p>
-              <p className="text-lg md:text-2xl font-bold">{formatCurrency(pool?.totalInvested || 0)}</p>
+              <p className="text-base sm:text-lg md:text-2xl font-bold truncate">{formatCurrency(pool?.totalInvested || 0)}</p>
             </div>
-            <div>
+            <div className="min-w-0">
               <p className="text-xs md:text-sm text-muted-foreground">Total Profit</p>
-              <p className="text-lg md:text-2xl font-bold text-success">{formatCurrency(pool?.totalProfit || 0)}</p>
+              <p className="text-base sm:text-lg md:text-2xl font-bold text-success truncate">{formatCurrency(pool?.totalProfit || 0)}</p>
             </div>
-            <div>
+            <div className="min-w-0">
               <p className="text-xs md:text-sm text-muted-foreground">Available Balance</p>
-              <p className="text-lg md:text-2xl font-bold">{formatCurrency(pool?.availableBalance || 0)}</p>
+              <p className="text-base sm:text-lg md:text-2xl font-bold truncate">{formatCurrency(pool?.availableBalance || 0)}</p>
             </div>
-            <div>
-              <p className="text-sm text-muted-foreground">Total Shares</p>
-              <p className="text-2xl font-bold">{formatNumber(pool?.totalShares || 0)}</p>
+            <div className="min-w-0">
+              <p className="text-xs md:text-sm text-muted-foreground">Total Shares</p>
+              <p className="text-base sm:text-lg md:text-2xl font-bold">{formatNumber(pool?.totalShares || 0)}</p>
             </div>
-            <div>
-              <p className="text-sm text-muted-foreground">Active Investors</p>
-              <p className="text-2xl font-bold">{formatNumber(pool?.activeInvestors || 0)}</p>
+            <div className="min-w-0">
+              <p className="text-xs md:text-sm text-muted-foreground">Active Investors</p>
+              <p className="text-base sm:text-lg md:text-2xl font-bold">{formatNumber(pool?.activeInvestors || 0)}</p>
             </div>
           </div>
         </CardContent>
@@ -385,41 +385,41 @@ export default function AdminDashboard() {
       </div>
 
       {/* Quick Stats */}
-      <div className="grid gap-4 md:grid-cols-3">
+      <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-3">
         <Card>
-          <CardContent className="p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-muted-foreground">Profit Distributed</p>
-                <p className="text-2xl font-bold text-success">
+          <CardContent className="p-4 sm:p-6">
+            <div className="flex items-center justify-between gap-2">
+              <div className="min-w-0">
+                <p className="text-xs sm:text-sm text-muted-foreground">Profit Distributed</p>
+                <p className="text-lg sm:text-xl md:text-2xl font-bold text-success truncate">
                   {formatCurrency(summary?.totalProfitDistributed || 0)}
                 </p>
               </div>
-              <PieChart className="h-8 w-8 text-success" />
+              <PieChart className="h-6 w-6 sm:h-8 sm:w-8 text-success flex-shrink-0" />
             </div>
           </CardContent>
         </Card>
         <Card>
-          <CardContent className="p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-muted-foreground">Pending Distributions</p>
-                <p className="text-2xl font-bold text-warning">
+          <CardContent className="p-4 sm:p-6">
+            <div className="flex items-center justify-between gap-2">
+              <div className="min-w-0">
+                <p className="text-xs sm:text-sm text-muted-foreground">Pending Distributions</p>
+                <p className="text-lg sm:text-xl md:text-2xl font-bold text-warning truncate">
                   {formatCurrency(summary?.pendingDistributions || 0)}
                 </p>
               </div>
-              <Clock className="h-8 w-8 text-warning" />
+              <Clock className="h-6 w-6 sm:h-8 sm:w-8 text-warning flex-shrink-0" />
             </div>
           </CardContent>
         </Card>
         <Card>
-          <CardContent className="p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-muted-foreground">Avg. Monthly ROI</p>
-                <p className="text-2xl font-bold">{summary?.averageMonthlyRoi || 0}%</p>
+          <CardContent className="p-4 sm:p-6">
+            <div className="flex items-center justify-between gap-2">
+              <div className="min-w-0">
+                <p className="text-xs sm:text-sm text-muted-foreground">Avg. Monthly ROI</p>
+                <p className="text-lg sm:text-xl md:text-2xl font-bold">{summary?.averageMonthlyRoi || 0}%</p>
               </div>
-              <TrendingUp className="h-8 w-8 text-primary" />
+              <TrendingUp className="h-6 w-6 sm:h-8 sm:w-8 text-primary flex-shrink-0" />
             </div>
           </CardContent>
         </Card>

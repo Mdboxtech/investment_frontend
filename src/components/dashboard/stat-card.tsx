@@ -26,16 +26,16 @@ export function StatCard({
 }: StatCardProps) {
   return (
     <Card className={cn('card-hover', className)}>
-      <CardContent className="p-6">
-        <div className="flex items-start justify-between">
-          <div className="space-y-2">
-            <p className="text-sm font-medium text-muted-foreground">{title}</p>
-            <div className="flex items-baseline gap-2">
-              <p className="text-2xl font-bold tracking-tight">{value}</p>
+      <CardContent className="p-3 sm:p-4 md:p-6">
+        <div className="flex items-start justify-between gap-2">
+          <div className="space-y-1 sm:space-y-2 min-w-0 flex-1">
+            <p className="text-xs sm:text-sm font-medium text-muted-foreground truncate">{title}</p>
+            <div className="flex flex-wrap items-baseline gap-1 sm:gap-2">
+              <p className="text-lg sm:text-xl md:text-2xl font-bold tracking-tight truncate">{value}</p>
               {trend && (
                 <span
                   className={cn(
-                    'text-sm font-medium',
+                    'text-xs sm:text-sm font-medium whitespace-nowrap',
                     trend.isPositive ? 'text-success' : 'text-destructive'
                   )}
                 >
@@ -45,16 +45,16 @@ export function StatCard({
               )}
             </div>
             {subtitle && (
-              <p className="text-xs text-muted-foreground">{subtitle}</p>
+              <p className="text-[10px] sm:text-xs text-muted-foreground truncate">{subtitle}</p>
             )}
           </div>
           <div
             className={cn(
-              'rounded-lg p-3 bg-primary/10',
+              'rounded-lg p-2 sm:p-3 bg-primary/10 flex-shrink-0',
               iconClassName
             )}
           >
-            <Icon className="h-5 w-5 text-primary" />
+            <Icon className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
           </div>
         </div>
       </CardContent>
@@ -72,7 +72,7 @@ export function MiniStat({ label, value, className }: MiniStatProps) {
   return (
     <div className={cn('space-y-1', className)}>
       <p className="text-xs text-muted-foreground">{label}</p>
-      <p className="text-lg font-semibold">{value}</p>
+      <p className="text-base sm:text-lg font-semibold truncate">{value}</p>
     </div>
   )
 }

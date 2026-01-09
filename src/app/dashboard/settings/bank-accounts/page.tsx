@@ -216,19 +216,19 @@ export default function BankAccountsPage() {
     return (
         <div className="space-y-6">
             {/* Header */}
-            <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+                <div className="flex items-center gap-3 sm:gap-4">
                     <Link href="/dashboard/wallet">
-                        <Button variant="ghost" size="icon">
-                            <ChevronLeft className="h-5 w-5" />
+                        <Button variant="ghost" size="icon" className="h-8 w-8 sm:h-10 sm:w-10">
+                            <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
                         </Button>
                     </Link>
                     <div>
-                        <h1 className="text-2xl font-bold tracking-tight">Bank Accounts</h1>
-                        <p className="text-muted-foreground">Manage your withdrawal bank accounts</p>
+                        <h1 className="text-xl sm:text-2xl font-bold tracking-tight">Bank Accounts</h1>
+                        <p className="text-sm text-muted-foreground">Manage your withdrawal bank accounts</p>
                     </div>
                 </div>
-                <Button onClick={() => setShowAddDialog(true)} className="gap-2">
+                <Button onClick={() => setShowAddDialog(true)} className="gap-2 w-full sm:w-auto">
                     <Plus className="h-4 w-4" />
                     Add Bank Account
                 </Button>
@@ -258,20 +258,20 @@ export default function BankAccountsPage() {
                 ) : (
                     accounts.map(account => (
                         <Card key={account.id} className={account.is_default ? 'border-primary' : ''}>
-                            <CardContent className="p-6">
-                                <div className="flex items-start justify-between mb-4">
-                                    <div className="flex items-center gap-3">
-                                        <div className={`h-12 w-12 rounded-xl flex items-center justify-center ${account.account_type === 'nigerian' ? 'bg-success/10' : 'bg-primary/10'
+                            <CardContent className="p-4 sm:p-6">
+                                <div className="flex items-start justify-between gap-2 mb-3 sm:mb-4">
+                                    <div className="flex items-center gap-2 sm:gap-3">
+                                        <div className={`h-10 w-10 sm:h-12 sm:w-12 rounded-xl flex items-center justify-center flex-shrink-0 ${account.account_type === 'nigerian' ? 'bg-success/10' : 'bg-primary/10'
                                             }`}>
                                             {account.account_type === 'nigerian' ? (
-                                                <Building className="h-6 w-6 text-success" />
+                                                <Building className="h-5 w-5 sm:h-6 sm:w-6 text-success" />
                                             ) : (
-                                                <Globe className="h-6 w-6 text-primary" />
+                                                <Globe className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
                                             )}
                                         </div>
-                                        <div>
-                                            <p className="font-semibold">{account.bank_name}</p>
-                                            <p className="text-sm text-muted-foreground">
+                                        <div className="min-w-0">
+                                            <p className="font-semibold text-sm sm:text-base truncate">{account.bank_name}</p>
+                                            <p className="text-xs sm:text-sm text-muted-foreground">
                                                 ****{account.account_number.slice(-4)}
                                             </p>
                                         </div>
@@ -288,17 +288,17 @@ export default function BankAccountsPage() {
                                     </div>
                                 </div>
 
-                                <div className="space-y-2 mb-4">
-                                    <div className="flex justify-between text-sm">
+                                <div className="space-y-1.5 sm:space-y-2 mb-3 sm:mb-4">
+                                    <div className="flex justify-between text-xs sm:text-sm">
                                         <span className="text-muted-foreground">Account Name</span>
-                                        <span>{account.account_name}</span>
+                                        <span className="truncate ml-2">{account.account_name}</span>
                                     </div>
-                                    <div className="flex justify-between text-sm">
+                                    <div className="flex justify-between text-xs sm:text-sm">
                                         <span className="text-muted-foreground">Currency</span>
                                         <span>{account.currency}</span>
                                     </div>
                                     {account.swift_code && (
-                                        <div className="flex justify-between text-sm">
+                                        <div className="flex justify-between text-xs sm:text-sm">
                                             <span className="text-muted-foreground">SWIFT Code</span>
                                             <span>{account.swift_code}</span>
                                         </div>

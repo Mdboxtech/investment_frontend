@@ -135,18 +135,18 @@ export default function UserDashboard() {
       <div data-tour="stats-grid" className="grid gap-4 grid-cols-2 lg:grid-cols-5">
         <div data-tour="stat-wallet-balance">
           <Card className="bg-gradient-to-br from-success/10 to-success/5 border-success/20">
-            <CardContent className="p-4">
-              <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-lg bg-success/20 flex items-center justify-center">
-                  <WalletIcon className="h-5 w-5 text-success" />
+            <CardContent className="p-3 sm:p-4">
+              <div className="flex items-center gap-2 sm:gap-3">
+                <div className="h-8 w-8 sm:h-10 sm:w-10 rounded-lg bg-success/20 flex items-center justify-center flex-shrink-0">
+                  <WalletIcon className="h-4 w-4 sm:h-5 sm:w-5 text-success" />
                 </div>
-                <div>
-                  <p className="text-sm text-muted-foreground">Wallet Balance</p>
-                  <p className="text-xl font-bold text-success">{formatCurrency(walletBalance)}</p>
+                <div className="min-w-0">
+                  <p className="text-xs sm:text-sm text-muted-foreground">Wallet Balance</p>
+                  <p className="text-base sm:text-lg md:text-xl font-bold text-success truncate">{formatCurrency(walletBalance)}</p>
                 </div>
               </div>
               <Link href="/dashboard/wallet">
-                <Button variant="outline" size="sm" className="w-full mt-3 border-success/30 text-success hover:bg-success/10">
+                <Button variant="outline" size="sm" className="w-full mt-2 sm:mt-3 border-success/30 text-success hover:bg-success/10 text-xs sm:text-sm">
                   Manage Wallet
                 </Button>
               </Link>

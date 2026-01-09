@@ -32,12 +32,16 @@ export default function DashboardLayout({
 
   useEffect(() => {
     const init = async () => {
+      // Check if modal was recently dismissed (within 24 hours)
+      const dismissedUntil = localStorage.getItem('email_verification_dismissed_until')
+      const isDismissed = dismissedUntil && parseInt(dismissedUntil) > Date.now()
+
       // Get stored user first
       const storedUser = authService.getUser()
       if (storedUser) {
         setUser(storedUser)
         // Check verification immediately for stored user
-        if (!storedUser.email_verified_at) {
+        if (!storedUser.email_verified_at && !isDismissed) {
           setShowVerificationModal(true)
         }
       }
@@ -51,11 +55,13 @@ export default function DashboardLayout({
         if (userData) {
           setUser(userData)
           // Update modal visibility based on fresh data
-          // Only show if explicitly NOT verified (null/undefined)
-          if (!userData.email_verified_at) {
+          // Only show if explicitly NOT verified and NOT dismissed
+          if (!userData.email_verified_at && !isDismissed) {
             setShowVerificationModal(true)
-          } else {
+          } else if (userData.email_verified_at) {
+            // If verified, ensure modal is closed and cleanup storage
             setShowVerificationModal(false)
+            localStorage.removeItem('email_verification_dismissed_until')
           }
         }
       } catch (err) {
@@ -67,6 +73,16 @@ export default function DashboardLayout({
 
     init()
   }, [])
+
+  const handleModalOpenChange = (open: boolean) => {
+    setShowVerificationModal(open)
+    if (!open && user && !user.email_verified_at) {
+      // If closing while still unverified (clicked "Later"), set sub-24h dismissal
+      // or set it for the session. Let's do 24 hours.
+      const tomorrow = Date.now() + 24 * 60 * 60 * 1000
+      localStorage.setItem('email_verification_dismissed_until', tomorrow.toString())
+    }
+  }
 
   // Use default values while loading
   const userName = user?.name || 'User'
@@ -82,7 +98,7 @@ export default function DashboardLayout({
       <EmailVerificationModal
         user={user}
         open={showVerificationModal}
-        onOpenChange={setShowVerificationModal}
+        onOpenChange={handleModalOpenChange}
       />
       <Sidebar userRole="user" isAdmin={isAdmin} />
       <div className="lg:pl-64 transition-all duration-300">

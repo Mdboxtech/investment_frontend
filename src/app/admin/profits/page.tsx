@@ -501,7 +501,7 @@ export default function ProfitsManagementPage() {
               </div>
               <div>
                 <p className="text-xs md:text-sm text-muted-foreground">Total Amount</p>
-                <p className="text-lg md:text-xl font-bold">{formatCurrency(summary?.total_amount || 0)}</p>
+                <p className="text-lg md:text-xl font-bold truncate">{formatCurrency(summary?.total_amount || 0)}</p>
               </div>
             </div>
           </CardContent>
@@ -514,7 +514,7 @@ export default function ProfitsManagementPage() {
               </div>
               <div>
                 <p className="text-xs md:text-sm text-muted-foreground">Distributed</p>
-                <p className="text-lg md:text-xl font-bold">{formatCurrency(summary?.total_distributed || 0)}</p>
+                <p className="text-lg md:text-xl font-bold truncate">{formatCurrency(summary?.total_distributed || 0)}</p>
               </div>
             </div>
           </CardContent>
@@ -527,7 +527,7 @@ export default function ProfitsManagementPage() {
               </div>
               <div>
                 <p className="text-xs md:text-sm text-muted-foreground">Pending</p>
-                <p className="text-lg md:text-xl font-bold text-warning">
+                <p className="text-lg md:text-xl font-bold text-warning truncate">
                   {formatCurrency(summary?.total_pending || 0)}
                 </p>
               </div>
@@ -542,7 +542,7 @@ export default function ProfitsManagementPage() {
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">Total Pools</p>
-                <p className="text-xl font-bold">{formatNumber(summary?.total_profit_pools || 0)}</p>
+                <p className="text-xl font-bold truncate">{formatNumber(summary?.total_profit_pools || 0)}</p>
               </div>
             </div>
           </CardContent>
@@ -551,20 +551,23 @@ export default function ProfitsManagementPage() {
 
       {/* Profit Records Tabs */}
       <Tabs defaultValue="all" className="space-y-4">
-        <TabsList>
-          <TabsTrigger value="all">All Records ({profits.length})</TabsTrigger>
-          <TabsTrigger value="pending">
-            Pending ({pendingProfits.length})
-            {pendingProfits.length > 0 && (
-              <Badge variant="warning" className="ml-2">{pendingProfits.length}</Badge>
-            )}
+        <TabsList className="w-full overflow-x-auto flex justify-start sm:justify-center h-auto flex-nowrap gap-2 p-1 no-scrollbar">
+          <TabsTrigger value="all" className="text-xs sm:text-sm px-2 sm:px-3 whitespace-nowrap">
+            All ({profits.length})
           </TabsTrigger>
-          <TabsTrigger value="completed">Completed ({completedProfits.length})</TabsTrigger>
-          <TabsTrigger value="cancelled">Cancelled ({cancelledProfits.length})</TabsTrigger>
-          <TabsTrigger value="losses" className="text-destructive">
+          <TabsTrigger value="pending" className="text-xs sm:text-sm px-2 sm:px-3 whitespace-nowrap">
+            Pending ({pendingProfits.length})
+          </TabsTrigger>
+          <TabsTrigger value="completed" className="text-xs sm:text-sm px-2 sm:px-3 whitespace-nowrap">
+            Completed ({completedProfits.length})
+          </TabsTrigger>
+          <TabsTrigger value="cancelled" className="text-xs sm:text-sm px-2 sm:px-3 whitespace-nowrap">
+            Cancelled ({cancelledProfits.length})
+          </TabsTrigger>
+          <TabsTrigger value="losses" className="text-xs sm:text-sm px-2 sm:px-3 whitespace-nowrap text-destructive">
             Losses ({lossProfits.length})
             {lossProfits.length > 0 && (
-              <Badge variant="destructive" className="ml-2">{lossProfits.length}</Badge>
+              <Badge variant="destructive" className="ml-1 text-[10px] px-1">!</Badge>
             )}
           </TabsTrigger>
         </TabsList>

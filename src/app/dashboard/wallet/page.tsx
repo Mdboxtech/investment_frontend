@@ -374,32 +374,32 @@ export default function WalletPage() {
                     return (
                       <div
                         key={transaction.id}
-                        className="flex items-center justify-between p-4 rounded-lg bg-muted/50"
+                        className="flex items-center justify-between p-3 sm:p-4 rounded-lg bg-muted/50 gap-2"
                       >
-                        <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
                           <div
-                            className={`h-10 w-10 rounded-full flex items-center justify-center bg-${typeInfo.color}/10`}
+                            className={`h-8 w-8 sm:h-10 sm:w-10 rounded-full flex items-center justify-center flex-shrink-0 bg-${typeInfo.color}/10`}
                           >
                             {typeInfo.icon === 'up' ? (
-                              <ArrowUpRight className={`h-5 w-5 text-${typeInfo.color}`} />
+                              <ArrowUpRight className={`h-4 w-4 sm:h-5 sm:w-5 text-${typeInfo.color}`} />
                             ) : typeInfo.icon === 'down' ? (
-                              <ArrowDownRight className={`h-5 w-5 text-${typeInfo.color}`} />
+                              <ArrowDownRight className={`h-4 w-4 sm:h-5 sm:w-5 text-${typeInfo.color}`} />
                             ) : (
-                              <DollarSign className={`h-5 w-5 text-${typeInfo.color}`} />
+                              <DollarSign className={`h-4 w-4 sm:h-5 sm:w-5 text-${typeInfo.color}`} />
                             )}
                           </div>
-                          <div>
-                            <p className="font-medium">
+                          <div className="min-w-0">
+                            <p className="font-medium text-sm sm:text-base truncate">
                               {transaction.description || typeInfo.label}
                             </p>
-                            <p className="text-sm text-muted-foreground">
+                            <p className="text-xs sm:text-sm text-muted-foreground">
                               {formatDate(transaction.created_at)}
                             </p>
                           </div>
                         </div>
-                        <div className="text-right">
+                        <div className="text-right flex-shrink-0">
                           <p
-                            className={`font-semibold ${transaction.type === 'deposit' || transaction.type === 'profit'
+                            className={`font-semibold text-sm sm:text-base ${transaction.type === 'deposit' || transaction.type === 'profit'
                               ? 'text-success'
                               : transaction.type === 'withdrawal'
                                 ? 'text-destructive'
@@ -417,7 +417,7 @@ export default function WalletPage() {
                                   ? 'secondary'
                                   : 'destructive'
                             }
-                            className="text-xs"
+                            className="text-[10px] sm:text-xs"
                           >
                             {transaction.status}
                           </Badge>
@@ -491,16 +491,17 @@ export default function WalletPage() {
               <div className="space-y-6 py-4">
                 {/* Quick Amount Selection */}
                 <div className="space-y-2">
-                  <Label>Quick Select</Label>
-                  <div className="grid grid-cols-4 gap-2">
+                  <Label className="text-sm">Quick Select</Label>
+                  <div className="grid grid-cols-3 sm:grid-cols-4 gap-1.5 sm:gap-2">
                     {quickAmounts.map((amount) => (
                       <Button
                         key={amount}
                         variant={depositAmount === amount.toString() ? 'default' : 'outline'}
                         size="sm"
                         onClick={() => setDepositAmount(amount.toString())}
+                        className="text-xs sm:text-sm px-1 sm:px-3"
                       >
-                        {amount}
+                        {amount >= 1000 ? `${amount / 1000}K` : amount}
                       </Button>
                     ))}
                   </div>

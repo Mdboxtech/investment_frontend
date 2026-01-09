@@ -7,13 +7,24 @@ import { TrendingUp, Shield, BarChart3, Users, ArrowRight, CheckCircle } from 'l
 import { formatCurrency, getCurrencySettings } from '@/lib/utils'
 import { useEffect, useState } from 'react'
 
+import { useRouter } from 'next/navigation'
+
 export default function HomePage() {
   const [currency, setCurrency] = useState({ symbol: '$', code: 'USD' })
+  const router = useRouter()
 
   useEffect(() => {
+    // Check for PWA standalone mode
+    const isPWA = window.matchMedia('(display-mode: standalone)').matches || (window.navigator as any).standalone
+
+    if (isPWA) {
+      router.push('/login')
+      return // Don't proceed with loading landing page data
+    }
+
     const settings = getCurrencySettings()
     setCurrency(settings)
-  }, [])
+  }, [router])
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-muted">
